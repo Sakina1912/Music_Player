@@ -1,0 +1,112 @@
+body{
+    box-sizing: border-box;
+    background-image: linear-gradient(0deg,#bfbffd 28% ,#fac6ce 92%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    h1{
+        color: rgb(102, 102, 102);
+    }
+    .music-container{
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 10px 10px 0 rgb(253, 186, 198);
+        display: flex;
+        padding: 20px 30px;
+        margin: 100px 0;
+        position: relative;
+        z-index: 10px;
+        .img-container{
+            position: relative;
+            width: 110px;
+            img{
+                width:110px;
+                height: 110px;
+                border-radius: 50%;
+                object-fit:cover;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                animation: rotate 3s linear infinite;
+                animation-play-state: paused;
+            }
+
+            @keyframes rotate {
+                from{
+                    transform: rotate(deg);
+                }
+                to{
+                    transform: rotate(360deg);
+                }
+            }
+        }
+        .navigation{
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            button{
+                background-color: #fff;
+                color: rgb(185, 185, 185);
+                border: 0;
+                font-size: 20px;
+                padding: 10px;
+                cursor: pointer;
+                margin: 0 20px;
+            }
+            .fa-play, .fa-pause{
+                font-size: 30px;
+            }
+            button:active{
+                transform: scale(0.98);
+            }
+        }
+        .music-info{
+            background-color: #fff;
+            border-radius: 5px;
+            position: absolute;
+            left: 0;
+            left: 20px;
+            width: calc(100% - 210px);
+            padding: 10px 10px 10px 150px;
+            transform: translateY(0%);
+            opacity: 0;
+            transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+            z-index: 0;
+            h4{
+                margin: 0px;
+            }
+            .progress-container{
+                background-color: #e0dada;
+                border-radius: 5px;
+                width: 100%;
+                height: 4px;
+                margin: 10px 0;
+                cursor: pointer;
+                .progress{
+                    background-color: #f58fa0;
+                    width: 0%;
+                    border-radius: 5px;
+                    height: 100%;
+                    transition: width 0.1s linear;
+                }
+            }
+
+        }
+    }
+
+    .music-container.play .img-container img{
+        animation-play-state: running;
+    }
+
+    .music-container.play .music-info{
+        transform: translateY(-100%);
+        opacity: 1;
+    }
+
+}
